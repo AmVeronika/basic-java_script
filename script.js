@@ -101,40 +101,11 @@ switch (a) {
       console.log("Число: 15");
 }
 console.log('Вариант решения 2:');
-
-function mp(x) {
-   if (x == 1) {
-      return x;
-   }
-   if (x < 15) {
-      return (x * mp(x - 1));
-   }
-   // {
-   //    if (a == 14) {
-   //       return console.log("Число: 14");
-   //    }
-   // }
-   // if (a == 13) {
-   //    return console.log("Число: 13");
-   // }
-   // if (a == 12) {
-   //    return console.log("Число: 12");
-   // }
-   // if (a == 11) {
-   //    return console.log("Число: 11");
-   // }
-   // if (a == 10) {
-   //    return console.log("Число: 10");
-   // }
-
-
-
-
-
-
-}
 console.log(`Рандомное значение а = ${a}`);
-console.log(mp(a));
+
+
+
+
 
 
 
@@ -156,3 +127,5 @@ console.log(mp(a));
 
 
 // 8. *С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow), где val – заданное число, pow – степень.
+console.log('Задача 8:');
+
