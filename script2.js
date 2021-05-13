@@ -11,6 +11,7 @@
 //    6. alert(b);                    // 3
 
 // Почему код даёт именно такие результаты?
+console.log('                 Задача 1 в комментариях');
 
 // В первом преобразовании используется префиксная форма. ++ увеличивает значение на единицу, и после присваивает полученное значение переменным а и с.
 // Таким образом переменные c = 2, a = 2.
@@ -32,6 +33,7 @@
 // 2. Чему будет равен x в примере ниже?
 // var a = 2;
 // var x = 1 + (a *= 2);
+console.log('                 Задача 2 в комментариях');
 
 // Переменной х в данном примере будет присвоено значение 5. Математический оператор в примере выше записан в упрощённом виде. 
 // a *=2 читается как: a = a * 2 => а =2 * 2. 
@@ -44,12 +46,12 @@
 // если а и b отрицательные, вывести их произведение;
 // если а и b разных знаков, вывести их сумму; 
 // ноль можно считать положительным числом.
-console.log('Задача 3:');
+console.log('                      Задача 3:');
 
 let am = parseInt(Math.random() * (100 - -100 + 1) + -100);
 let bm = parseInt(Math.random() * (100 - -100 + 1) + -100);
 console.log(`Переменная a = ${am}`);
-console.log(`Переменная a = ${bm}`);
+console.log(`Переменная b = ${bm}`);
 if (am >= 0 && bm >= 0) {
    console.log(`Разность а и b = ${am - bm}`);
 } else if (am < 0 && bm < 0) {
@@ -60,11 +62,13 @@ if (am >= 0 && bm >= 0) {
 
 
 // 4. Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a до 15. Дополнительно, по желанию, реализуйте решение с помощью рекурсивной функции.
-console.log('Задача 4:');
-console.log('Вариант решения 1:');
+console.log('                      Задача 4:');
+console.log('        Вариант решения 1:');
 
 let a = parseInt(Math.random() * (15 - 0 + 1) + 0);
 //let a = parseInt(Math.random() * 16);
+
+
 console.log(`Рандомное значение а = ${a}`);
 switch (a) {
    case 0:
@@ -100,23 +104,74 @@ switch (a) {
    case 15:
       console.log("Число: 15");
 }
-console.log('Вариант решения 2:');
+console.log('         Вариант решения 2:');
 console.log(`Рандомное значение а = ${a}`);
 
+function rand(x) {
 
+   if (x == 16) {
+      return;
+   }
 
+   console.log('Число: ' + x++);
+   rand(x)
+}
+rand(a);
 
 
 
 
 // 5. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.
+console.log('                      Задача 5:');
 
+let one = 5;
+let two = 2;
+function sum(a, b) {
+   let sum = a + b;
+   console.log(`Сумма чисел ${a} и ${b} = ${sum}`);
+}
 
+function subtraction(a, b) {
+   let subtraction = a - b;
+   console.log(`Вычитание чисел ${a} и ${b} = ${subtraction}`);
+}
+
+function product(a, b) {
+   let product = a * b;
+   console.log(`Умножение чисел ${a} и ${b} = ${product}`);
+}
+function division(a, b) {
+   let division = a / b;
+   console.log(`Деление чисел ${a} и ${b} = ${division}`);
+
+}
+sum(one, two);
+subtraction(one, two);
+product(one, two);
+division(one, two);
 
 
 
 // 6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от переданного значения операции выполнить одну из арифметических операций (использовать функции из пункта 5) и вернуть полученное значение (использовать switch).
-
+console.log('                      Задача 6:');
+let operation = +prompt('Задача 6: Введите от 1 до 4, где 1 это сложение, 2 вычитание, 3 умножение, 4 деление', '');
+function mathOperation(arg1, arg2, operation) {
+   switch (operation) {
+      case 1:
+         sum(arg1, arg2);
+         break;
+      case 2:
+         subtraction(arg1, arg2);
+         break;
+      case 3:
+         product(arg1, arg2);
+         break;
+      case 4:
+         division(arg1, arg2);
+         break;
+   }
+}
+mathOperation(one, two, operation);
 
 
 
@@ -127,5 +182,15 @@ console.log(`Рандомное значение а = ${a}`);
 
 
 // 8. *С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow), где val – заданное число, pow – степень.
-console.log('Задача 8:');
+console.log('                      Задача 8:');
+var v = 1;
+function power(val, pow) {
 
+   if (pow === 0) {
+      return console.log(`2 в степени 3 = ${v}`);
+   }
+   v *= val;
+   --pow;
+   power(val, pow);
+}
+power(3, 4);
