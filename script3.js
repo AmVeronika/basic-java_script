@@ -12,7 +12,7 @@ while (num <= 100) {
       i++;
    }
    if (count == 0)
-   document.write(num + 'просстое число <br>');
+   document.write(num + ' - простое число <br>');
 
    num++;
 } 
