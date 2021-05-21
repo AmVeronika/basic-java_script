@@ -1,9 +1,11 @@
 //После игры необходимо спросить номер вопроса. 
 //По номеру вопроса нужно вывести текст вопроса и текст выбранного ответа
 
-var event, ok;
+var event, eventTwo, ok;
 
-//var answers = [];
+var answers = [
+];
+
 
 do {//Выводим первый вопрос
    ok = false;
@@ -15,7 +17,7 @@ do {//Выводим первый вопрос
    else {
       ok = isAnswer(works.a0, event);
    }
-} while (!ok);
+} while (!ok) answers.push(event);
 switch (event) {
    case 1: // Первое действие  - если в первом окне ввели 1 то открываем серию окон - окно 2
       do {
@@ -27,7 +29,7 @@ switch (event) {
          else {
             ok = isAnswer(works.b0, event);
          }
-      } while (!ok);
+      } while (!ok) answers.push(event);
       switch (event) {
          case 1: // Второе действие, если во 2 окне ввели 1 то переходим на 4 окно
          case 2: // Второе действие   Если ввели 2 то также переходим на 4 окно
@@ -40,8 +42,7 @@ switch (event) {
                else {
                   ok = isAnswer(works.d0, event);
                }
-            } while (!ok);
-
+            } while (!ok) answers.push(event);
             break;
          case -1: // Второе действие
             break;
@@ -59,7 +60,7 @@ switch (event) {
          else {
             ok = isAnswer(works.c0, event);
          }
-      } while (!ok);
+      } while (!ok) answers.push(event);
       switch (event) {
          case 1: // Второе действие
          case 2: // Второе действие
@@ -72,8 +73,7 @@ switch (event) {
                else {
                   ok = isAnswer(works.d0, event);
                }
-            } while (!ok);
-
+            } while (!ok) answers.push(event);
             break;
          case -1: // Второе действие
             break;
@@ -87,6 +87,48 @@ switch (event) {
       alert('Ошибка');
 }
 alert('Спасибо за игру');
+
+answ();
+function answ() { //  Уточнение вопроса
+   eventTwo = +prompt('Какой вопрос Вам вывести? 1, 2 или 3?', '1');
+
+   if (eventTwo < 1 || eventTwo > 3) {
+      alert('Ваше число выходит из допустимого диапозона');
+      answ();
+   }
+}
+console.log(answers);
+switch (eventTwo) {
+   case 1:
+      if (answers[0]== 1){
+         alert(works.a00 + works.a1); 
+      } else {
+         alert(works.a00 + works.a2)
+      }; 
+      break;
+   case 2:
+      if (answers[0]==1) {
+         if (answers[1]== 1){
+            alert(works.b00 + works.b1); 
+         } else {
+            alert(works.b00 + works.b2)
+         };
+      }
+      else {
+         if (answers[1]== 1){
+            alert(works.c00 + works.c1); 
+         } else {
+            alert(works.c00 + works.c2)
+         };
+      }
+      break;
+   case 3:
+      if (answers[2]== 1){
+         alert(works.d00 + works.d1); 
+      } else alert(works.d00 + works.d2);
+      break;
+
+}
 
 //------------------------------------------
 function isAnswer(q, event) {
