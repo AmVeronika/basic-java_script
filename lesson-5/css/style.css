@@ -1,0 +1,19 @@
+@import "_nullstyle.scss";
+
+.сhess-board {
+   margin: 150px auto;
+   border: 5px solid rgb(111, 53, 0);
+   height: 800px;
+   width: 800px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-content: center;
+}
+.line,
+.column {
+   border: 2px solid rgb(111, 53, 0);
+   height: 86px;
+   width: 96px;
+   margin: 0;
+}
