@@ -6,12 +6,22 @@
    height: 832px;
    width: 832px;
    display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(8, 1fr);
   
 }
-.cell,
-.column {
+.line {
+   display: grid;
+   grid-template-columns: repeat(8, 1fr);
+   grid-template-rows: 1fr;
+}
+.cell {
    border: 2px solid rgb(111, 53, 0);
    margin: 0;
+   font-size: 40px;
+   text-align: center;
+   padding: 20px;
+}
+.size-figure {
+   color: white;
 }
