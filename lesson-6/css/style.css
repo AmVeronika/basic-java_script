@@ -21,31 +21,28 @@ body {
 }
 .img-min {
    width: 300px;
-   margin: 0 auto;
-   cursor: pointer;
    margin: auto;
+   cursor: pointer;
 }
 .img-min:hover {
-width: 310px;
-height: 310px;
+   transform: scale(1.1);
 }
 
 
 .img-wrapp-big {
    display: flex;
-   justify-content: space-between;   
-   flex-wrap: wrap;
-   margin-top: 100px;
+   justify-content: center;
+   margin-top: 200px;
    max-width: 100%;
-   height: 300px;
+   height: 500px;
    border: 1px solid red;
 
 }
 .img-big {
    width: 300px;
-   margin: 0 auto;
-   cursor: pointer;
    margin: auto;
    transform: scale(1.5, 1.5);
-   opacity: 0.09;
+}
+.opacity-img {
+   display: none;
 }
