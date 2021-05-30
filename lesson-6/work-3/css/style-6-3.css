@@ -1,0 +1,65 @@
+@import "_nullstyle.scss";
+
+body {
+   background: #000;
+}
+.container {
+   max-width: 1200px;
+   margin: 100px auto;
+}
+
+.img-wrapp-min {
+   height: 200px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   /* border: 1px solid red; */
+}
+.img-min {
+   width: 150px;
+   margin: auto;
+   cursor: pointer;
+}
+.img-min:hover {
+   transform: scale(1.1);
+}
+
+.img-wrapp-big {
+   display: flex;
+   justify-content: center;
+   width: 1025px;
+   height: 600px;
+   /* border: 1px solid red; */
+}
+.img-big {
+   object-fit: cover;
+}
+/* CТИЛИ ДЛЯ КНОПОК */
+
+.button {
+   width: 85px;
+   height: 500px;
+   opacity: 0.5;
+   font-size: 82px;
+}
+.button:hover {
+   background: red;
+}
+
+.button:active {
+   border: 3px solid white;
+}
+.button-right {
+   border-bottom-right-radius: 100%;
+   border-top-right-radius: 22%;
+}
+.button-left {
+   border-bottom-left-radius: 100%;
+   border-top-left-radius: 22%;
+}
+.div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 100px;
+}

@@ -1,0 +1,91 @@
+
+.container {
+   max-width: 1200px;
+   max-height: max-content;
+   margin: 10px auto;
+   border: 1px solid red;
+}
+header {
+   text-align: center;
+}
+.h2-title {
+   text-align: center;
+   margin: 10px 0 30px;
+}
+.cart-block {
+   display: flex;
+    justify-content: space-between;
+}
+.cart-wrapp {
+   display: grid;
+   width: 900px;
+   gap: 10px;
+   border: 1px solid rgb(255, 230, 0);
+
+}
+.product-cart {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.cart-counter {
+   width: 250px;
+   height: 300px;
+   border: 1px solid rgb(255, 230, 0);
+}
+.counter-sum {
+   color: crimson;
+}
+.counter-title {
+   font-size: 20px;
+}
+.product-wrapp {
+   border: 1px solid rgb(0, 17, 255);
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 10px;
+}
+.product-quantity-car {
+   text-align: center;
+   font-size: 30px;
+   display: block;
+   line-height: 65px;
+   width: 100px;
+}
+.product-price{
+   font-size: 30px;
+   font-weight: 700;
+   color: darkcyan;
+   margin: 10px;
+}
+.product-card {
+   max-width: 500px;
+   border: 1px solid rgb(0, 255, 0);
+   padding: 10px;
+}
+.product-title {
+   font-size: 30px;
+   margin: 10px 0 25px;
+}
+.product-img{
+   width: 250px;
+}
+.product-description {
+   font-size: 25px;
+   margin: 10px;
+}
+.product-button, .counter-button {
+   display: block;
+   margin: auto;
+   padding: 5px 30px;
+   cursor: pointer;
+}
+.counter-button {
+   font-size: 30px;
+}
+.counter-span {
+   color: darkblue;
+   font-weight: 900;
+   font-size: 50px;
+}
