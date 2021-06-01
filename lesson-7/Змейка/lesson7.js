@@ -6,7 +6,6 @@ var snake = []; // Сама змейка
 var direction = 'y+'; // Направление движения змейки
 var gameIsRunning = false; // Запущена ли игра
 var snake_timer; // Таймер змейки
-var food_timer; // Таймер для еды
 var score = 0; // Результат
 var textSpan;//Выводит кол-во очков в DOM
 
@@ -23,7 +22,6 @@ function init() {
    // Отслеживание клавиш клавиатуры
    addEventListener('keydown', changeDirection);
 }
-
 /**
  * Функция генерации игрового поля
  */
@@ -47,10 +45,8 @@ function prepareGameField() {
       }
       game_table.append(row); // Добавление строки
    }
-
    document.getElementById('snake-field').append(game_table); // Добавление таблицы
 }
-
 /**
  * Старт игры
  */
@@ -60,6 +56,7 @@ function startGame() {
 
    snake_timer = setInterval(move, SNAKE_SPEED);//каждые 200мс запускаем функцию move
    setTimeout(createFood, 5000);
+   setInterval(barier, 6500);//Барьер
 }
 
 /**
@@ -83,7 +80,6 @@ function respawn() {
    snake.push(snake_tail);
    snake.push(snake_head);// snake = ['<td class="game-table-cell cell-10-10 snake-unit"></td>','<td class="game-table-cell cell-9-10 snake-unit"></td>'];
 }
-
 /**
  * Движение змейки
  */
@@ -112,12 +108,28 @@ function move() {
    else if (direction == 'y-') {
       new_unit = document.getElementsByClassName('cell-' + (coord_y + 1) + '-' + (coord_x))[0];//Почему не работает вариант с .querySelector('.cell-' + (coord_y + 1) + '-' + (coord_x))? Возвращает new_unit = null.
    }
-
    // Проверки
    // 1) new_unit не часть змейки
    // 2) Змейка не ушла за границу поля
-   //console.log(new_unit);
-   if (!isSnakeUnit(new_unit) && new_unit !== undefined) {//Если новые координаты головы не на месте змейки и не за пределом поля
+   if (new_unit === undefined) {
+      switch (direction) {
+         case 'x+':
+            new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (0))[0];
+            break;
+         case 'x-':
+            new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (FIELD_SIZE_Y - 1))[0];
+            break;
+         case 'y+':
+            new_unit = document.getElementsByClassName('cell-' + (FIELD_SIZE_X - 1) + '-' + (coord_x))[0];
+            break;
+         case 'y-':
+            new_unit = document.getElementsByClassName('cell-' + (0) + '-' + (coord_x))[0];
+            break;
+      }
+
+   }
+
+   if (!isSnakeUnit(new_unit) && !new_unit.classList.contains('barier-unit')) {//Если новые координаты головы не на месте змейки и не на месте барьера
       // Добавление новой части змейки
       new_unit.classList.add('snake-unit');//new_unit = <td class="game-table-cell cell-8-10 snake-unit"></td>
       // через 5 сек с едой  ['<td class="game-table-cell cell-8-10 food-unit snake-unit"></td>']  => new_unit = <td class="game-table-cell cell-8-10 food-unit snake-unit"></td>
@@ -139,7 +151,6 @@ function move() {
       finishTheGame();
    }
 }
-
 /**
  * Проверка на змейку
  * @param unit
@@ -160,7 +171,6 @@ function isSnakeUnit(unit) { // new_unit = <td class="game-table-cell cell-8-10"
  */
 function haveFood(unit) {//<td class="game-table-cell cell-8-10 snake-unit"></td>
    var check = false;     // Если <td class="game-table-cell cell-8-10 food-unit snake-unit"></td>
-
    var unit_classes = unit.getAttribute('class').split(' ');// unit_classes = ['game-table-cell', 'cell-8-10', 'snake-unit']
    //unit_classes = ['game-table-cell', 'cell-8-10', 'food-unit', 'snake-unit']
    // Если еда
@@ -175,7 +185,6 @@ function haveFood(unit) {//<td class="game-table-cell cell-8-10 snake-unit"></td
    }
    return check;// false
 }
-
 /**
  * Создание еды
  */
@@ -197,6 +206,23 @@ function createFood() {
       }
    }
 }
+/**
+ * Создание барьера
+ */
+function barier() {
+   var barier_x = Math.floor(Math.random() * FIELD_SIZE_X);//[0,20) => от 0 до 19, т.к. Math.floor //2
+   var barier_y = Math.floor(Math.random() * FIELD_SIZE_Y);//                                        8
+
+   var barier_cell = document.querySelector('.cell-' + barier_y + '-' + barier_x); //food_cell = <td class="game-table-cell cell-8-2"></td>
+   var barier_cell_classes = barier_cell.getAttribute('class').split(' '); //food_cell_classes = ['game-table-cell', ' cell-8-2']
+
+   // проверка на змейку и на еду 
+   if (!barier_cell_classes.includes('snake-unit') || !barier_cell_classes.includes('food-unit')) {// Если это не ячейка со змейкой и не с едой
+      barier_cell.classList.add('barier-unit'); //food_cell = <td class="game-table-cell cell-8-2 food-unit"></td>
+   }
+
+}
+
 
 /*
  * Изменение направления движения змейки
