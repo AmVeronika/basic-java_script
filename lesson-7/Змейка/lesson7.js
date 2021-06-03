@@ -220,7 +220,6 @@ function barier() {
    if (!barier_cell_classes.includes('snake-unit') || !barier_cell_classes.includes('food-unit')) {// Если это не ячейка со змейкой и не с едой
       barier_cell.classList.add('barier-unit'); //food_cell = <td class="game-table-cell cell-8-2 food-unit"></td>
    }
-
 }
 
 
