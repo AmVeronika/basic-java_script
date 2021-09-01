@@ -6,43 +6,36 @@ var event, eventTwo, ok;
 var answers = [
 ];
 
+function met() {
+   do {//Выводим первый вопрос
+      ok = false;
+      event = +prompt(this.a00 + this.a1 + this.a2 + '-1 - Выход из игры');
 
-do {//Выводим первый вопрос
-   ok = false;
-   event = +prompt(works.a00 + works.a1 + works.a2 + '-1 - Выход из игры');
+      if (event == -1) {
+         break;
+      }
+      else {
+         ok = isAnswer(this.a0, event);
+      }
+   } while (!ok);
+   answers.push(event);
+}
 
-   if (event == -1) {
-      break;
-   }
-   else {
-      ok = isAnswer(works.a0, event);
-   }
-} while (!ok) answers.push(event);
+worksA.method = met;
+worksB.method = met;
+worksC.method = met;
+worksD.method = met;
+
+
+worksA.method()
+
 switch (event) {
    case 1: // Первое действие  - если в первом окне ввели 1 то открываем серию окон - окно 2
-      do {
-         ok = false;
-         event = +prompt(works.b00 + works.b1 + works.b2 + '-1 - Выход из игры');
-         if (event == -1) {
-            break;
-         }
-         else {
-            ok = isAnswer(works.b0, event);
-         }
-      } while (!ok) answers.push(event);
+      worksB.method()
       switch (event) {
          case 1: // Второе действие, если во 2 окне ввели 1 то переходим на 4 окно
          case 2: // Второе действие   Если ввели 2 то также переходим на 4 окно
-            do {
-               ok = false;
-               event = +prompt(works.d00 + works.d1 + works.d2 + '-1 - Выход из игры');
-               if (event == -1) {
-                  break;
-               }
-               else {
-                  ok = isAnswer(works.d0, event);
-               }
-            } while (!ok) answers.push(event);
+            worksD.method()
             break;
          case -1: // Второе действие
             break;
@@ -51,29 +44,11 @@ switch (event) {
       }
       break;
    case 2: // Первое действие    Если в 1 окне ввели 2 то переходим к 3 окну
-      do {
-         ok = false;
-         event = +prompt(works.c00 + works.c1 + works.c2 + '-1 - Выход из игры');
-         if (event == -1) {
-            break;
-         }
-         else {
-            ok = isAnswer(works.c0, event);
-         }
-      } while (!ok) answers.push(event);
+      worksC.method()
       switch (event) {
          case 1: // Второе действие
          case 2: // Второе действие
-            do {
-               ok = false;
-               event = +prompt(works.d00 + works.d1 + works.d2 + '-1 - Выход из игры');
-               if (event == -1) {
-                  break;
-               }
-               else {
-                  ok = isAnswer(works.d0, event);
-               }
-            } while (!ok) answers.push(event);
+            worksD.method()
             break;
          case -1: // Второе действие
             break;
@@ -100,32 +75,32 @@ function answ() { //  Уточнение вопроса
 console.log(answers);
 switch (eventTwo) {
    case 1:
-      if (answers[0]== 1){
-         alert(works.a00 + works.a1); 
+      if (answers[0] == 1) {
+         alert(worksA.a00 + worksA.a1);
       } else {
-         alert(works.a00 + works.a2)
-      }; 
+         alert(worksA.a00 + worksA.a2)
+      };
       break;
    case 2:
-      if (answers[0]==1) {
-         if (answers[1]== 1){
-            alert(works.b00 + works.b1); 
+      if (answers[0] == 1) {
+         if (answers[1] == 1) {
+            alert(worksB.a00 + worksB.a1);
          } else {
-            alert(works.b00 + works.b2)
+            alert(worksB.a00 + worksB.a2)
          };
       }
       else {
-         if (answers[1]== 1){
-            alert(works.c00 + works.c1); 
+         if (answers[1] == 1) {
+            alert(worksC.a00 + worksC.a1);
          } else {
-            alert(works.c00 + works.c2)
+            alert(worksC.a00 + worksC.a2)
          };
       }
       break;
    case 3:
-      if (answers[2]== 1){
-         alert(works.d00 + works.d1); 
-      } else alert(works.d00 + works.d2);
+      if (answers[2] == 1) {
+         alert(worksD.a00 + worksD.a1);
+      } else alert(worksD.a00 + worksD.a2);
       break;
 
 }

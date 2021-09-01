@@ -1,0 +1,40 @@
+@import "_nullstyle.scss";
+
+body {
+   background: #000;
+}
+.container {
+   max-width: 80vw;
+   margin: 100px auto;
+}
+
+.img-wrapp-min {
+   height: 200px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   border: 1px solid red;
+}
+.img-min {
+   width: 10vw;
+   margin: auto;
+   cursor: pointer;
+}
+.img-min:hover {
+   transform: scale(1.1);
+}
+
+.img-wrapp-big {
+   display: flex;
+   justify-content: center;
+   width: 62vw;
+   height: 36vh;
+   border: 1px solid red;
+}
+.img-big {
+   max-width: 600px;
+}
+.div {
+   display: flex;
+   justify-content: center; 
+}
